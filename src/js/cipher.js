@@ -16,6 +16,7 @@
 // Cipher module: module to encrypt or decrypt a message with AES-128 ECB
 
 var util = require('util');
+var cipherBuiltin = process.binding(process.binding.cipher);
 
 function Cipher() {
 }
@@ -39,6 +40,8 @@ Cipher.prototype.encrypt = function(input, key) {
     throw new RangeError("Bad arguments: key's length should be 16Bytes."
         + " Given key is " + key.length + "Bytes.");
   }
+
+  return cipherBuiltin.encrypt(input, key);
 };
 
 // cipher.decrypt()
@@ -60,6 +63,8 @@ Cipher.prototype.decrypt = function(input, key) {
     throw new RangeError("Bad arguments: key's length should be 16Bytes."
         + " Given key is " + key.length + "Bytes.");
   }
+
+  return cipherBuiltin.decrypt(input, key);
 };
 
 module.exports = new Cipher();
