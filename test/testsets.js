@@ -19,6 +19,7 @@ function testsets() {
       'test_assert.js',
       'test_buffer_builtin.js',
       'test_buffer.js',
+      'test_cipher.js',
       'test_console.js',
       'test_cwd.js',
       'test_dgram_1_server_1_client.js',
