@@ -453,6 +453,25 @@ JHANDLER_FUNCTION(Encrypt) {
   // Encrypt Logic
   encrypt_aes128_ecb(input_array, key_array, output_array);
 
+  // Debugging Message
+  size_t key_length = iotjs_bufferwrap_length(key_buffer_wrap);
+  size_t output_length = iotjs_bufferwrap_length(output_buffer_wrap);
+  printf("Input:");
+  for (int i = 0; i < (int)input_length; i++) {
+    printf("%02x ", input_array[i]);
+  }
+  printf("\n");
+  printf("Key:");
+  for (int i = 0; i < (int)key_length; i++) {
+    printf("%02x ", key_array[i]);
+  }
+  printf("\n");
+  printf("Output:");
+  for (int i = 0; i < (int)output_length; i++) {
+    printf("%02x ", output_array[i]);
+  }
+  printf("\n");
+
   // Return output!
   iotjs_jhandler_return_jval(jhandler, &output_jbuffer);
   iotjs_jval_destroy(&output_jbuffer);
@@ -480,6 +499,25 @@ JHANDLER_FUNCTION(Decrypt) {
 
   // Decrypt Logic
   decrypt_aes128_ecb(input_array, key_array, output_array);
+
+  // Debugging Message
+  size_t key_length = iotjs_bufferwrap_length(key_buffer_wrap);
+  size_t output_length = iotjs_bufferwrap_length(output_buffer_wrap);
+  printf("Input:");
+  for (int i = 0; i < (int)input_length; i++) {
+    printf("%02x ", input_array[i]);
+  }
+  printf("\n");
+  printf("Key:");
+  for (int i = 0; i < (int)key_length; i++) {
+    printf("%02x ", key_array[i]);
+  }
+  printf("\n");
+  printf("Output:");
+  for (int i = 0; i < (int)output_length; i++) {
+    printf("%02x ", output_array[i]);
+  }
+  printf("\n");
 
   // Return output!
   iotjs_jhandler_return_jval(jhandler, &output_jbuffer);
